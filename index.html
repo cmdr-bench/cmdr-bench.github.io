@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CMDR: Contextual Multimodal Document Retrieval</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Contextual Multimodal Document Retrieval">
+    <meta name="keywords" content="Retrieval, Embeddings, Vision Language Model, Large Language Model, Large Multimodal Model, artificial intelligence, AI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./static/images/mmmu_icon2.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/carousel-gen.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/charts.js"></script>
+  </head>
+  <body>
+
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title is-bold">
+                <span class="cmdr" style="vertical-align: middle">CMDR</span>
+              </h1>
+              <h2 class="subtitle is-3 publication-subtitle">
+                Contextual Multimodal Document Retrieval
+              </h2>
+              <h5 class="subtitle is-5 publication-awards">
+                ECCV 2026
+              </h5>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://rtanaka-lab.github.io/" style="text-decoration: none; color: inherit;">Ryota Tanaka</a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=8MQwGgoAAAAJ" style="text-decoration: none; color: inherit;">Taku Hasegawa</a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://www.knishida.info/" style="text-decoration: none; color: inherit;">Kyosuke Nishida</a>,
+                </span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://cmdr.github.io/" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>arXiv (Comming Soon)</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://huggingface.co/datasets/NTT-hil-insight/CMDR-Bench" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon" style="font-size:18px">🤗</span>
+                      <span>CMDR-Bench</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="container is-max-desktop has-text-centered">
+        <p>
+          <span style="font-size: 135%;"><b>CMDR-Bench</b> focuses on indirectly retrieving relevant pages by leveraging document context, and <b>CMDR-Embed</b> jointly encodes multiple pages to capture cross-page contextual relationships.</span>        
+        </p>
+        <img src="static/images/fig1.png" alt="cmdr overview">
+      </div>   
+    </section>
+
+
+    <!-- DATASET SECTION -->
+    <section class="hero is-light is-small">
+      <div class="hero-body has-text-centered">
+        <h1 class="title is-1 cmdr">
+          <span class="cmdr-bench">CMDR-Bench</span>
+        </h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Overview</h2>
+            <div class="content has-text-justified">
+              <p>
+                We introduce <b>C</b>ontextual <b>M</b>ultimodal <b>D</b>ocument <b>R</b>etrieval (<b>CMDR</b>), a new multimodal document retrieval task in which a system must retrieve relevant pages from a multi-page document (i.e., an ordered set of document images) while leveraging the document context.
+              </p>
+              <img src="static/images/cmdr_example.png" alt="cmdr-bench example" class="center">
+              <br>
+              <p>
+                CMDR-Bench is designed to measure four skills in retrieval models: 
+                <li><b>Text Completion (TC): </b>Key textual content is split across pages, requiring accurate reconstruction of the semantic flow to maintain coherence.
+                <li><b>Coreference Resolution (CR): </b>References such as pronouns or abbreviations must be resolved using contextual cues found only in other pages.
+                <li><b>Structured Understanding (SU): </b>Understanding how structured components relate to each other across page boundaries (e.g., a table header defined on one page and its rows continued on the next), independent of entity resolution or multi-entity aggregation.
+                <li><b>Multi-hop Reasoning (MR): </b>An inference path that connects the entities in the query and the relevant page via the document context. Unlike CR, which resolves referential links between an entity and its mentions, MR involves multi-entity semantic reasoning.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered m-6">
+          <div class="column is-full has-text-centered content">
+            <h2 class="title is-3">Statistics</h2>
+            <div class="carousel results-carousel">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="static/images/dataset_dist.png" alt="dataset distribution" width="95%"/>
+                  <p> Dataset distribution of the CMDR-Bench.</p>
+                </div>
+              </div>
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="static/images/statistics.png" alt="statistics" width="95%"/>
+                  <p> Key statistics of the CMDR-Bench.</p>
+                </div>
+              </div>
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="static/images/query_distribution.png" alt="query distribution" width="95%"/>
+                  <p> Distribution of queries in the CMDR-Bench.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATASET SECTION -->
+    <section class="hero is-light is-small">
+      <div class="hero-body has-text-centered">
+        <h1 class="title is-1 cmdr">
+          <span class="cmdr-embed">CMDR-Embed</span>
+        </h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Model architecture</h2>
+            <div class="content has-text-justified">
+              <p>
+                Unlike non-contextual retrievers (e.g., ColPali), which encode each page independently and thus fail to capture cross-page context, CMDR-Embed encodes not only the content of the page itself but also explicitly incorporates contextual information.
+              </p>
+              <img src="static/images/cmdr-embed.png" alt="cmdr-embed overview" width="30%" class="center">
+              <br>
+              <p>
+                To enable cross-page interactions within a document, we adopt a chunk-then-split strategy. Consecutive pages are first encoded together, and the resulting representations are then split into page-level embeddings (i.e., sequences of token-level embeddings).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered m-6">
+          <div class="column is-full has-text-centered content">
+            <h2 class="title is-3">Contextual Multimodal Contrastive Learning (CMCL)</h2>
+            <div class="content has-text-justified">
+              <img src="static/images/cmcl.png" alt="cmcl overview" width="15%" class="center">
+              <br>
+              <p>
+                Because CMDR-Embed encodes multiple pages jointly, representations from different pages in the same document can be mixed, which weakens page-level discriminability. 
+                To address this issue, we propose a new contrastive learning framework, Contextual Multimodal Contrastive Learning (CMCL). 
+                Specifically, we reinforce the standard InfoNCE objective by introducing two types of context-aware hard negatives: In-Chunk Negatives, which are different pages within the same chunk, and In-Document Negatives, which are other chunks from the same document. 
+                Intuitively, In-Chunk Negatives are more effective when similar context appears on nearby pages, whereas In-Document Negatives are particularly helpful when information similar to the relevant page appears on distant pages outside the current chunk. This design prevents neighboring pages from becoming overly similar and ensures that each page maintains a distinct representation, even when contextual information is shared.              </p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- RESULTS SECTION -->
+    <section class="hero is-light is-small">
+      <div class="hero-body has-text-centered">
+        <h1 class="title is-1 mmmu">Experiment Results</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+      <!-------------------------------------------------------------------- Main Results SECTION -------------------------------------------------------------------->
+        <div class="columns is-centered m-6">
+          <div class="column is-full has-text-centered content">
+            <h2 class="title is-3">Main Results</h2>
+            <div class="content has-text-justified">
+              <p>
+                CMDR-Embed, which leverages contextual information, significantly outperforms models that do not consider the document context. 
+                Importantly, this performance gain cannot be attributed solely to the training data. Even when trained on the same data, the non-contextual models ColPali and ColQwen still underperform compared to our contextual models CMDR-EmbedPali and CMDR-EmbedQwen. 
+                CMDR-EmbedQwen emerges as the strongest retriever in this setting, achieving an average improvement of 16.2 points over the best non-contextual baseline. These results demonstrate that explicitly modeling document context yields benefits beyond what existing approaches can capture.              
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <img src="static/images/main_results.png" alt="main_results" width="80%">
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- @PAN TODO: bibtex -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title is-3 has-text-centered">BibTeX</h2>
+        <pre><code>
+          @inproceedings{tanaka2026cmdr,
+            title={CMDR: Contextual Multimodal Document Retrieval},
+            author={Ryota Tanaka and Taku Hasegawa and Kyosuke Nishida},
+            booktitle={Proceedings of ECCV},
+            year={2026},
+          }
+    </code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a> and <a href="https://mathvista.github.io/">MathVista</a>, licensed under a <a rel="license"
+                                                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
